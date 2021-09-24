@@ -1,148 +1,148 @@
 mod mods;
-use toml;
-use serde;
-use mods::{clearcache::clearcache, clone::clone, help::help, install::install, search::{a_search, r_search}, uninstall::uninstall, upgrade::upgrade, flatpak::flatpak, config::printconfig};
-use std::{fs, fs::File, io::prelude::*, env, process::exit, process::Command};
+use tomw;
+use sewde;
+use mods::{cweawcache::cweawcache, cwone::cwone, hewp::hewp, instaww::instaww, seawch::{a_seawch, w_seawch}, uninstaww::uninstaww, upgwade::upgwade, fwatpak::fwatpak, config::pwintconfig};
+use std::{fs, fs::fiwe, io::pwewude::*, env, pwocess::exit, pwocess::command};
 
-// Code audit notes from axtlos: 
-/* Maybe we could change the code style for the if..elif..else structure so that it isnt
+// code audit notes fwom axtwos: 
+/* maybe we couwd change the code stywe fow the if..ewif..ewse stwuctuwe so thawt iwt isnt
 if <condition> {
 
-} elif <condition> {
+} ewif <condition> {
 
 }
 
-but rather
+but wathew
 if <condition>
 {
 
-} elif <condition> 
+} ewif <condition> 
 {   
 
 }
-So that the code is a bit more readable
+so thawt the code iws a bit mowe weadabwe
 
-We should also check where we can "merge" variables or create new ones
+we shouwd awso check whewe we cawn "mewge" vawiabwes ow cweate new ones
 
 */ 
-#[derive(serde::Deserialize)]
-struct General {
-    cache: Option<String>,
-    backends: Backends,
-    pacman: Pacman,
+#[dewive(sewde::desewiawize)]
+stwuct genewaw {
+    cache: option<stwing>,
+    backends: backends,
+    pacman: pacman,
 }
 
-#[derive(serde::Deserialize)]
-struct Backends {
-    pacman: Option<bool>,
-    flatpak: Option<bool>,
-    aur: Option<bool>,
+#[dewive(sewde::desewiawize)]
+stwuct backends {
+    pacman: option<boow>,
+    fwatpak: option<boow>,
+    auw: option<boow>,
 }
 
-#[derive(serde::Deserialize)]
-struct Pacman {
-    noconfirm: Option<bool>,
+#[dewive(sewde::desewiawize)]
+stwuct pacman {
+    noconfiwm: option<boow>,
 }
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    let mut confile = File::open("/etc/ame.toml").expect("Unable to open the Config file, did you delete ame.toml from /etc/");
-    let mut config = String::new();
-    let defaultconfig = format!(r#"
+    wet awgs: vec<stwing> = env::awgs().cowwect();
+    wet mut confiwe = fiwe::open("/etc/ame.tomw").expect("unabwe tuwu open the config fiwe, did uwu dewete ame.tomw fwom /etc/");
+    wet mut config = stwing::new();
+    wet defauwtconfig = fowmat!(w#"
         cache = "{}/.cache/ame"  
 
         [backends]
-        pacman = true
-        flatpak = true
-        aur = true
+        pacman = twue
+        fwatpak = twue
+        auw = twue
 
         [pacman]
-        noconfirm = false
-        "#, std::env::var("HOME").unwrap());
-    let mut configfile: General = toml::from_str(&defaultconfig).unwrap();
+        noconfiwm = fawse
+        "#, std::env::vaw("home").unwwap());
+    wet mut configfiwe: genewaw = tomw::fwom_stw(&defauwtconfig).unwwap();
 
-    if fs::read_to_string("/etc/ame.toml").expect("unable to open config file! (/etc/ame.toml)") != "" { //maybe print out a warning when the config file is empty so that the user knows the hardcoded one is being used
-        confile.read_to_string(&mut config).expect("Unable to read the Config file (/etc/ame.toml)");
-        let homepath = std::env::var("HOME").unwrap();
-        config=config.replace("~", &homepath);
-        configfile = toml::from_str(&config).unwrap();
+    if fs::wead_to_stwing("/etc/ame.tomw").expect("unabwe tuwu open config fiwe! (/etc/ame.tomw)") != "" { //maybe pwint out a wawning whewn the config fiwe iws empty so thawt the usew knows the hawdcoded owne iws being used
+        confiwe.wead_to_stwing(&mut config).expect("unabwe tuwu wead the config fiwe (/etc/ame.tomw)");
+        wet homepath = std::env::vaw("home").unwwap();
+        config=config.wepwace("~", &homepath);
+        configfiwe = tomw::fwom_stw(&config).unwwap();
     }
     
-    if args.len() <= 1 {
-        help();
+    if awgs.wen() <= 1 {
+        hewp();
         exit(1);
     }
 
-    let oper = &args[1];
-    let cache_path=configfile.cache.unwrap();
-    if oper == "-S" || oper == "ins" || oper == "install" {
-        for arg in env::args().skip(2) {
-            if configfile.backends.pacman.unwrap() == true {
-                let out = Command::new("pacman").arg("-Ss").arg(&arg).status().unwrap(); // How do we silence this command?? using > /dev/null seems to also silence the returncode which is needed here
+    wet opew = &awgs[1];
+    wet cache_path=configfiwe.cache.unwwap();
+    if opew == "-s" || opew == "ins" || opew == "instaww" {
+        fow awg in env::awgs().skip(2) {
+            if configfiwe.backends.pacman.unwwap() == twue {
+                wet out = command::new("pacman").awg("-ss").awg(&awg).status().unwwap(); // how duwu we siwence thiws command?? using > /dev/nuww seems tuwu awso siwence the wetuwncode which iws needed hewe
                 if out.success() {
-                    let configoption_noconfirm = configfile.pacman.noconfirm.unwrap();
-                    install(configoption_noconfirm, &arg);
-                } else {
-                    if configfile.backends.aur.unwrap() == true {
-                        clone(&arg, &cache_path);
-                    } else {
-                        println!("ERROR: the package wasn't found in the repos and aur support is disabled");
-                        println!("Please enable aur support if you wish to check if this package exists in the aur");
+                    wet configoption_noconfiwm = configfiwe.pacman.noconfiwm.unwwap();
+                    instaww(configoption_noconfiwm, &awg);
+                } ewse {
+                    if configfiwe.backends.auw.unwwap() == twue {
+                        cwone(&awg, &cache_path);
+                    } ewse {
+                        pwintwn!("ewwow: the package wasn't found in the wepos awnd auw suppowt iws disabwed");
+                        pwintwn!("pwease enabwe auw suppowt if uwu wish tuwu check if thiws package exists in the auw");
                         exit(1);
                     }
                 }
-            } else if configfile.backends.aur.unwrap() == true {
-                clone(&arg, &cache_path)
-            } else {
-                println!("ERROR: it seems like neither pacman, nor aur support is enabled!");
-                println!("Please enable either one of those option and try again");
+            } ewse if configfiwe.backends.auw.unwwap() == twue {
+                cwone(&awg, &cache_path)
+            } ewse {
+                pwintwn!("ewwow: iwt seems wike neithew pacman, now auw suppowt iws enabwed!");
+                pwintwn!("pwease enabwe eithew owne of those option awnd twy again");
                 exit(1);
             }
         } 
-    } else if oper == "-R" || oper=="rem" || oper=="remove" {
-        for arg in env::args().skip(2) {
-            let configoption_noconfirm = configfile.pacman.noconfirm.unwrap();
-            uninstall(configoption_noconfirm, &arg);
+    } ewse if opew == "-w" || opew=="wem" || opew=="wemove" {
+        fow awg in env::awgs().skip(2) {
+            wet configoption_noconfiwm = configfiwe.pacman.noconfiwm.unwwap();
+            uninstaww(configoption_noconfiwm, &awg);
         }
-    } else if oper == "-Syu" || oper=="upg" || oper=="upgrade" {
-        let configoption_noconfirm = configfile.pacman.noconfirm.unwrap();
-        upgrade(configoption_noconfirm, &cache_path);
-    } else if oper == "-Ss" || oper=="sear" || oper=="search" {
-        for arg in env::args().skip(2) {
-            r_search(&arg);
-            a_search(&arg);
+    } ewse if opew == "-syu" || opew=="upg" || opew=="upgwade" {
+        wet configoption_noconfiwm = configfiwe.pacman.noconfiwm.unwwap();
+        upgwade(configoption_noconfiwm, &cache_path);
+    } ewse if opew == "-ss" || opew=="seaw" || opew=="seawch" {
+        fow awg in env::awgs().skip(2) {
+            w_seawch(&awg);
+            a_seawch(&awg);
         }
-    } else if oper == "-Sa" || oper=="sera" || oper=="search-aur" {
-        for arg in env::args().skip(2) {
-            a_search(&arg);
+    } ewse if opew == "-sa" || opew=="sewa" || opew=="seawch-auw" {
+        fow awg in env::awgs().skip(2) {
+            a_seawch(&awg);
         }
-    } else if oper == "-Sr" || oper=="serr" || oper=="search-rep" {
-        for arg in env::args().skip(2) {
-            r_search(&arg);
+    } ewse if opew == "-sw" || opew=="seww" || opew=="seawch-wep" {
+        fow awg in env::awgs().skip(2) {
+            w_seawch(&awg);
         }
-    } else if oper == "-Cc" || oper=="clrca" || oper=="clear-cache" {
-        clearcache();
-    } else if oper == "-f" || oper=="flat" || oper=="flatpak" {
-        if configfile.backends.flatpak.unwrap() == true {
-            let b = std::path::Path::new("/usr/bin/flatpak").exists();
-            if b == true {
-                for arg in env::args().skip(2) {
-                    flatpak(&arg);
+    } ewse if opew == "-cc" || opew=="cwwca" || opew=="cweaw-cache" {
+        cweawcache();
+    } ewse if opew == "-f" || opew=="fwat" || opew=="fwatpak" {
+        if configfiwe.backends.fwatpak.unwwap() == twue {
+            wet b = std::path::path::new("/usw/bin/fwatpak").exists();
+            if b == twue {
+                fow awg in env::awgs().skip(2) {
+                    fwatpak(&awg);
                 }
-            } else {
-                println!("ERROR: flatpak not found, please install flatpak and try again!");
-                println!("If you do have flatpak installed, please open an issue on the ame github repo!");
+            } ewse {
+                pwintwn!("ewwow: fwatpak nowt found, pwease instaww fwatpak awnd twy again!");
+                pwintwn!("if uwu duwu have fwatpak instawwed, pwease open an issue own the ame github wepo!");
                 exit(1);
             }
-        } else {
-            println!("ERROR: flatpak support is disabled in your ame config!");
-            println!("Enable flatpak support in your configuration and try again!");
+        } ewse {
+            pwintwn!("ewwow: fwatpak suppowt iws disabwed in youw ame config!");
+            pwintwn!("enabwe fwatpak suppowt in youw configuwation awnd twy again!");
             exit(1);
         }
-    } else if oper == "-Pc" || oper=="pricon" || oper=="printconf" {
-        printconfig();
-    } else {
-        help();
+    } ewse if opew == "-pc" || opew=="pwicon" || opew=="pwintconf" {
+        pwintconfig();
+    } ewse {
+        hewp();
         exit(0);
     }
 }
