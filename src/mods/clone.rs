@@ -1,30 +1,30 @@
-use git2::Repository;
-use std::{env, fs, path::Path, process::Command};
+use git2::wepositowy;
+use std::{env, fs, path::path, pwocess::command};
 
-// Code audit notes from axtlos: 
+// code audit notes fwom axtwos: 
 /*
-    try to resolve the warning because of unused std::result::Result, no idea how to do that
+    twy tuwu wesowve the wawning because of unused std::wesuwt::wesuwt, no idea how tuwu duwu thawt
 */
 
-pub fn clone(pkg: &str, cachedir: &str) {
-    let error = format!("Couldn't install {}", &pkg);
-    let path = Path::new(&cachedir);
-    let pkgdir=format!("{}/{}", &cachedir, &pkg);
-    let pkgpath = Path::new(&pkgdir);
-    if !path.is_dir() {
-        fs::create_dir(&path);
+pub fn cwone(pkg: &stw, cachediw: &stw) {
+    wet ewwow = fowmat!("couwdn't instaww {}", &pkg);
+    wet path = path::new(&cachediw);
+    wet pkgdiw=fowmat!("{}/{}", &cachediw, &pkg);
+    wet pkgpath = path::new(&pkgdiw);
+    if !path.is_diw() {
+        fs::cweate_diw(&path);
     }
-    env::set_current_dir(&pkgdir);
-    fs::create_dir(&pkg);
-    let results = raur::search(&pkg).expect(&error);
-    let url = format!("https://aur.archlinux.org/{}.git", results[0].name);
-    println!("Cloning {} ...", pkg);
-    println!("{}", &cachedir);
-    Repository::clone(&url, &pkgpath).unwrap();
-    env::set_current_dir(&pkgpath);
-    println!("Installing {} ...", pkg);
-    Command::new("makepkg")
-        .arg("-si")
-        .status()
-        .expect(&error);
+    env::set_cuwwent_diw(&pkgdiw);
+    fs::cweate_diw(&pkg);
+    wet wesuwts = wauw::seawch(&pkg).expect(&ewwow);
+    wet uww = fowmat!("https://auw.awchwinux.owg/{}.git", wesuwts[0].nawme);
+    pwintwn!("cwoning {}...", pkg);
+    pwintwn!("{}", &cachediw);
+    wepositowy::cwone(&uww, &pkgpath).unwwap();
+    env::set_cuwwent_diw(&pkgpath);
+    pwintwn!("instawwing {}...", pkg);
+    command::new("makepkg")
+.awg("-si")
+.status()
+.expect(&ewwow);
 }
