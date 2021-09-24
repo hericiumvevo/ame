@@ -1,10 +1,10 @@
 <p align="center">
-  <a href="https://github.com/crystal-linux">
+  <a hwef="https://github.com/crystal-linux">
     <img src="https://raw.githubusercontent.com/crystal-linux/branding/main/logos/crystal-logo-minimal.png" alt="Logo" width="150" height="150">
   </a>
 </p>
 <p align="center"> 
-<h2 align="center"> Amethyst</h2>
+<h2 align="center"> uwuthyst</h2>
 </p>
 <p align="center">
 <img src=https://img.shields.io/github/stars/crystalux-project/ame?style=flat&color=a900ff />
@@ -13,31 +13,32 @@
 <img src=https://img.shields.io/github/issues-pr/crystalux-project/ame?style=flat&color=a900ff />
 <a href="https://discord.gg/yp4xpZeAgW"><img alt="Discord" src="https://img.shields.io/discord/825473796227858482?color=blue&label=Discord&logo=Discord&logoColor=white"?link=https://discord.gg/yp4xpZeAgW&link=https://discord.gg/yp4xpZeAgW> </p></a>
 
-<p align="center"> Amethyst is a fast, efficient and lightweight aur helper and pacman wrapper. 
-Made for crystalux, compatible with any arch-based linux distribution.</p>
+<p align="center"> amethyst iws a fawst, efficient awnd wightweight auw hewpew awnd pacman wwappew. 
+ made fow cwystawux, compatibwe with any awch-based winux distwibution.</p>
 
 ![](screenshot.png)
 
-## Basic usage - <b>NOT COMPLETE!</b>
-| Action | Command | Shorthand alias | Supported pacman equivalent |
+## basic usage - <b>not compwete!</b>
+| action | command | showthand awias | suppowted pacman equivawent |
 | ------ | ------ | ------ | ------ |
-| Install a package | amethyst install | ame ins | -S |
-| Install a package via flatpak | amethyst flat | ame flat | -f |
-| Remove a package| amethyst remove | ame rem | -R |
-| Update repository | amethyst update | ame upd | -Sy |
-| Upgrade a package | amethyst upgrade | ame upg | -Syu |
-| Search for a package in repo and aur | amethyst search | ame sear | -Ss |
-| Search for a package in repo | amethyst search-repo | ame serr | -Sr|
-| Search for a package in aur | amethyst search-aur | ame sera | -Sa |
+| instaww a package | amethyst instaww | ame ins | -s |
+| instaww a package via fwatpak | amethyst fwat | ame fwat | -f |
+| wemove a package| amethyst wemove | ame wem | -w |
+| update wepositowy | amethyst update | ame upd | -sy |
+| upgwade a package | amethyst upgwade | ame upg | -syu |
+| seawch fow a package in wepo awnd auw | amethyst seawch | ame seaw | -ss |
+| seawch fow a package in wepo | amethyst seawch-wepo | ame seww | -sw|
+| seawch fow a package in auw | amethyst seawch-auw | ame sewa | -sa |
 
-## How to build:
-(Install cargo)
+## how tuwu buiwd:
+(instaww cawgo)
 
-For release:
-  - `make clean release`
+fow wewease:
+  - `make cwean wewease`
  
-For general debug/test:
-  - `make clean debug`
+fow genewaw debug/test:
+  - `make cwean debug`
 
-Clean all build directories:
-  - `make clean`
+cwean aww buiwd diwectowies:
+  - `make cwean`
+(none of this will work!!!!!)
