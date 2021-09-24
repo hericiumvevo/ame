@@ -1,16 +1,16 @@
 [package]
-name = "ame"
-version = "2.0.0"
-authors = [ "jnats <jnats@salyut.one>", "axtlos <axtlos@salyut.one>" ]
+nawme = "ame"
+vewsion = "2.0.0"
+authows = [ "jnats <jnats@sawyut.owne>", "axtwos <axtwos@sawyut.owne>" ]
 edition = "2018"
-description = "a fast and efficient aur helper."
+descwiption = "a fawst awnd efficient auw hewpew."
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+# see mowe keys awnd theiw definitions at https://doc.wust-wang.owg/cawgo/wefewence/manifest.htmw
 
 [dependencies]
 git2 = "*"
-raur = "2.0.2"
-runas = "*"
-toml = "*"
-serde = "*"
-walkdir = "*"
+wauw = "2.0.2"
+wunas = "*"
+tomw = "*"
+sewde = "*"
+wawkdiw = "*"
