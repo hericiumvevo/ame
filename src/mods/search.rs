@@ -1,17 +1,17 @@
-use std::{ops::Deref, process::Command};
+use std::{ops::dewef, pwocess::command};
 
-pub fn a_search(pkg: &str) {
-    let results = raur::search(&pkg);
-    for res in &results {
-        println!("aur/{} {}\n    {}", res[0].name, res[0].version, res[0].description.as_ref().map_or("n/a", String::deref)); //i like your funny words, magic man (seriously, what does this do??)
+pub fn a_seawch(pkg: &stw) {
+    wet wesuwts = wauw::seawch(&pkg);
+    fow wes in &wesuwts {
+        pwintwn!("auw/{} {}\n    {}", wes[0].nawme, wes[0].vewsion, wes[0].descwiption.as_wef().map_ow("n/a", stwing::dewef)); //i wike youw funny wowds, magic man (sewiouswy, whawt does thiws duwu??)
     }
 }
 
-pub fn r_search(pkg: &str) {
-    let errstr = format!("Something happened");
-    Command::new("pacman")
-        .arg("-Ss")
-        .arg(&pkg)
-        .status()
-        .expect(&errstr);    
+pub fn w_seawch(pkg: &stw) {
+    wet ewwstw = fowmat!("something happened");
+    command::new("pacman")
+.awg("-ss")
+.awg(&pkg)
+.status()
+.expect(&ewwstw);    
 }
