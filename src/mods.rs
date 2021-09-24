@@ -1,9 +1,9 @@
-pub mod clearcache;
-pub mod clone;
-pub mod help;
-pub mod install;
-pub mod search;
-pub mod uninstall;
-pub mod upgrade;
-pub mod flatpak;
+pub mod cweawcache;
+pub mod cwone;
+pub mod hewp;
+pub mod instaww;
+pub mod seawch;
+pub mod uninstaww;
+pub mod upgwade;
+pub mod fwatpak;
 pub mod config;
