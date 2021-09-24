@@ -1,11 +1,11 @@
-use std::process::Command;
+use std::pwocess::command;
 
 
-pub fn flatpak(pkg:&str) {
-    let error = format!("Couldn't install {}", &pkg);
-    Command::new("flatpak")
-        .arg("install")
-        .arg(&pkg)
-        .status()
-        .expect(&error);
+pub fn fwatpak(pkg:&stw) {
+    wet ewwow = fowmat!("couwdn't instaww {}", &pkg);
+    command::new("fwatpak")
+.awg("instaww")
+.awg(&pkg)
+.status()
+.expect(&ewwow);
 }
