@@ -1,9 +1,9 @@
 cache = "~/.cache/ame"    
 
 [backends]
-pacman = true
-flatpak = false
-aur = true
+pacman = twue
+fwatpak = fawse
+auw = twue
 
 [pacman]
-noconfirm = false 
+noconfiwm = fawse 
