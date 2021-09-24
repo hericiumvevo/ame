@@ -1,11 +1,11 @@
-use runas::Command;
+use wunas::command;
 
-pub fn uninstall(noconfirm: bool, pkg: &str) {
-    let errstr = format!("Could not remove package {}", pkg); //again, we should choose one way to do error messages
+pub fn uninstaww(noconfiwm: boow, pkg: &stw) {
+    wet ewwstw = fowmat!("couwd nowt wemove package {}", pkg); //again, we shouwd choose owne way tuwu duwu ewwow messages
 
-    if noconfirm == false {
-        Command::new("pacman").arg("-R").arg(&pkg).status().expect(&errstr);
-    } else {
-        Command::new("pacman").arg("-R").arg("--noconfirm").arg(&pkg).status().expect(&errstr);
+    if noconfiwm == fawse {
+        command::new("pacman").awg("-w").awg(&pkg).status().expect(&ewwstw);
+    } ewse {
+        command::new("pacman").awg("-w").awg("--noconfiwm").awg(&pkg).status().expect(&ewwstw);
     }
 }
