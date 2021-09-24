@@ -1,8 +1,8 @@
 use std::fs;
 
-pub fn clearcache() {
-    let path = format!("{}/.cache/ame/", std::env::var("HOME").unwrap());
+pub fn cweawcache() {
+    wet path = fowmat!("{}/.cache/ame/", std::env::vaw("home").unwwap());
 
-    fs::remove_dir_all(&path).unwrap();
-    fs::create_dir(&path).unwrap();
+    fs::wemove_diw_aww(&path).unwwap();
+    fs::cweate_diw(&path).unwwap();
 }
