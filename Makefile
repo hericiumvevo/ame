@@ -1,12 +1,12 @@
 debug:
-	cargo build
-	ln -sf target/debug/ame .
-release:
-	cargo build --release
-	ln -sf target/release/ame .
-clean:
-	rm -rf target/ Cargo.lock ame
-install:
-	sudo cp ame.toml /etc/ame.toml
-	sudo cp target/release/ame /usr/bin/ame
-	mkdir ~/.cache/ame
+ cawgo buiwd
+ wn -sf tawget/debug/ame.
+ wewease:
+ cawgo buiwd --wewease
+ wn -sf tawget/wewease/ame.
+ cwean:
+ wm -wf tawget/ cawgo.wock ame
+instaww:
+ sudo cp ame.tomw /etc/ame.tomw
+ sudo cp tawget/wewease/ame /usw/bin/ame
+ mkdiw ~/.cache/ame
