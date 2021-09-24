@@ -1,60 +1,60 @@
-use toml;
-use serde;
-use std::{fs, fs::File, io::prelude::*};
+use tomw;
+use sewde;
+use std::{fs, fs::fiwe, io::pwewude::*};
 
 
-#[derive(serde::Deserialize)]
-struct General {
-    cache: Option<String>,
-    backends: Backends,
-    pacman: Pacman,
+#[dewive(sewde::desewiawize)]
+stwuct genewaw {
+    cache: option<stwing>,
+    backends: backends,
+    pacman: pacman,
 }
 
-#[derive(serde::Deserialize)]
-struct Backends {
-    pacman: Option<bool>,
-    flatpak: Option<bool>,
-    aur: Option<bool>,
+#[dewive(sewde::desewiawize)]
+stwuct backends {
+    pacman: option<boow>,
+    fwatpak: option<boow>,
+    auw: option<boow>,
 }
 
-#[derive(serde::Deserialize)]
-struct Pacman {
-    noconfirm: Option<bool>,
+#[dewive(sewde::desewiawize)]
+stwuct pacman {
+    noconfiwm: option<boow>,
 }
 
 
 
-pub fn printconfig() {
-    let mut confile = File::open("/etc/ame.toml").expect("Unable to open the Config file, did you delete ame.toml from /etc/??");
-    let mut config = String::new();
-    let defaultconfig = format!(r#"
+pub fn pwintconfig() {
+    wet mut confiwe = fiwe::open("/etc/ame.tomw").expect("unabwe tuwu open the config fiwe, did uwu dewete ame.tomw fwom /etc/??");
+    wet mut config = stwing::new();
+    wet defauwtconfig = fowmat!(w#"
         cache = "{}/.cache/ame"  
 
         [backends]
-        pacman = true
-        flatpak = true
-        aur = true
+        pacman = twue
+        fwatpak = twue
+        auw = twue
 
         [pacman]
-        noconfirm = false
-    "#, std::env::var("HOME").unwrap());
-    let mut configfile: General = toml::from_str(&defaultconfig).unwrap();
-    if fs::read_to_string("/etc/ame.toml").expect("unable to open config file! (/etc/ame.toml)") != "" { //maybe print out a warning when the config file is empty so that the user knows the hardcoded one is being used
-        confile.read_to_string(&mut config).expect("Unable to read the Config file (/etc/ame.toml)");
-        let homepath = std::env::var("HOME").unwrap();
-        config=config.replace("~", &homepath);
-        configfile = toml::from_str(&config).unwrap();
+        noconfiwm = fawse
+    "#, std::env::vaw("home").unwwap());
+    wet mut configfiwe: genewaw = tomw::fwom_stw(&defauwtconfig).unwwap();
+    if fs::wead_to_stwing("/etc/ame.tomw").expect("unabwe tuwu open config fiwe! (/etc/ame.tomw)") != "" { //maybe pwint out a wawning whewn the config fiwe iws empty so thawt the usew knows the hawdcoded owne iws being used
+        confiwe.wead_to_stwing(&mut config).expect("unabwe tuwu wead the config fiwe (/etc/ame.tomw)");
+        wet homepath = std::env::vaw("home").unwwap();
+        config=config.wepwace("~", &homepath);
+        configfiwe = tomw::fwom_stw(&config).unwwap();
     }
-    println!("\
-General:
-    Cache directory: {}
+    pwintwn!("\
+genewaw:
+    cache diwectowy: {}
 
-Backends:
-    pacman support: {}
-    aur support: {}
-    flatpak support: {}
+backends:
+    pacman suppowt: {}
+    auw suppowt: {}
+    fwatpak suppowt: {}
 
-Pacman:
-    noconfirm: {}
-", configfile.cache.unwrap(), configfile.backends.pacman.unwrap(), configfile.backends.aur.unwrap(), configfile.backends.flatpak.unwrap(), configfile.pacman.noconfirm.unwrap());
+pacman:
+    noconfiwm: {}
+", configfiwe.cache.unwwap(), configfiwe.backends.pacman.unwwap(), configfiwe.backends.auw.unwwap(), configfiwe.backends.fwatpak.unwwap(), configfiwe.pacman.noconfiwm.unwwap());
 }
